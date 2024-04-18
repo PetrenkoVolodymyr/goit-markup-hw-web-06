@@ -1,6 +1,7 @@
-SELECT s.student , ROUND(AVG(mark), 2) as avgMark
+SELECT s2.topics , g.groups , ROUND(AVG(m.mark), 2) as avgMark
 FROM marks m
-INNER JOIN students s ON s.id = m.student_id 
-GROUP by student_id 
-ORDER by avgMark DESC
-LIMIT 5
+INNER JOIN subjects s2 ON s2.id = m.subject_id 
+INNER JOIN students AS s ON s.id = m.student_id 
+INNER JOIN groups g ON g.id = s.gruop_id  
+WHERE subject_id  = 3
+GROUP by s.gruop_id 
